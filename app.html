@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Book Log – Ellie Child</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Georgia', serif;
+        background-color: #fdf6ec;
+        color: #3d2b1f;
+      }
+
+      nav {
+        background-color: #7a4f3a;
+        padding: 14px 30px;
+        display: flex;
+        gap: 20px;
+      }
+
+      nav a {
+        color: #fdf6ec;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      nav a:hover { text-decoration: underline; }
+
+      .hero {
+        background-color: #e0c9b0;
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        color: #7a4f3a;
+      }
+
+      .hero p {
+        color: #5a3e2b;
+        margin-top: 8px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .form-card {
+        background: #fff8f0;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 2px 12px rgba(122,79,58,0.1);
+        margin-bottom: 40px;
+      }
+
+      .form-card h2 {
+        color: #7a4f3a;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+        color: #5a3e2b;
+      }
+
+      input, select, textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #e0c9b0;
+        border-radius: 8px;
+        font-family: 'Georgia', serif;
+        font-size: 0.95rem;
+        background-color: #fdfaf7;
+        color: #3d2b1f;
+      }
+
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #b07d8a;
+      }
+
+      .star-row {
+        display: flex;
+        gap: 8px;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      .star { color: #e0c9b0; transition: color 0.2s; }
+      .star.selected { color: #c49a6c; }
+
+      button {
+        background-color: #7a4f3a;
+        color: #fdf6ec;
+        border: none;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-family: 'Georgia', serif;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      button:hover { background-color: #5a3e2b; }
+
+      .books-section h2 {
+        color: #7a4f3a;
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+        border-bottom: 2px solid #e0c9b0;
+        padding-bottom: 8px;
+      }
+
+      .book-card {
+        background: #fff8f0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(122,79,58,0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .book-info h3 {
+        color: #7a4f3a;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+
+      .book-info p {
+        font-size: 0.9rem;
+        color: #5a3e2b;
+        margin-bottom: 4px;
+      }
+
+      .book-stars { color: #c49a6c; font-size: 1.1rem; }
+
+      .status-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-top: 6px;
+      }
+
+      .status-read { background-color: #d4edda; color: #3a6b47; }
+      .status-reading { background-color: #fff3cd; color: #856404; }
+      .status-want { background-color: #f5eaea; color: #b07d8a; }
+
+      .delete-btn {
+        background: none;
+        color: #b07d8a;
+        border: 1px solid #e8d5d5;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        width: auto;
+        margin-top: 0;
+      }
+
+      .delete-btn:hover { background-color: #f5eaea; }
+
+      .empty-state {
+        text-align: center;
+        color: #c49a6c;
+        padding: 40px;
+        font-style: italic;
+      }
+
+      .stats-row {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .stat-box {
+        flex: 1;
+        background: #fff8f0;
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(122,79,58,0.08);
+      }
+
+      .stat-box .number {
+        font-size: 2rem;
+        color: #7a4f3a;
+        font-weight: bold;
+      }
+
+      .stat-box .label {
+        font-size: 0.85rem;
+        color: #5a3e2b;
+      }
+
+      footer {
+        background-color: #7a4f3a;
+        color: #fdf6ec;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="resume.html">Résumé</a>
+      <a href="scratch.html">More About Me</a>
+    </nav>
+
+    <div class="hero">
+      <h1>📖 My Book Log</h1>
+      <p>Track every book you've read, are reading, or want to read!</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="number" id="countRead">0</div>
+          <div class="label">Books Read</div>
+        </div>
+        <div class="stat-box">
+          <div class="number" id="countReading">0</div>
+          <div class="label">Currently Reading</div>
+        </div>
+        <div class="stat-box">
+          <div class="number" id="countWant">0</div>
+          <div class="label">Want to Read</div>
+        </div>
+      </div>
+
+      <!-- Add Book Form -->
+      <div class="form-card">
+        <h2>✨ Add a Book</h2>
+        <div class="form-group">
+          <label>Book Title</label>
+          <input type="text" id="bookTitle" placeholder="e.g. Fourth Wing" />
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" id="bookAuthor" placeholder="e.g. Rebecca Yarros" />
+        </div>
+        <div class="form-group">
+          <label>Genre</label>
+          <input type="text" id="bookGenre" placeholder="e.g. Romantasy" />
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="bookStatus">
+            <option value="read">Read ✅</option>
+            <option value="reading">Currently Reading 📖</option>
+            <option value="want">Want to Read 🌸</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Rating</label>
+          <div class="star-row" id="starRow">
+            <span class="star" data-val="1">★</span>
+            <span class="star" data-val="2">★</span>
+            <span class="star" data-val="3">★</span>
+            <span class="star" data-val="4">★</span>
+            <span class="star" data-val="5">★</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes (optional)</label>
+          <textarea id="bookNotes" rows="3" placeholder="What did you think?"></textarea>
+        </div>
+        <button onclick="addBook()">Add to My Log 📚</button>
+      </div>
+
+      <!-- Book List -->
+      <div class="books-section">
+        <h2>My Reading Log</h2>
+        <div id="bookList">
+          <div class="empty-state">No books yet — add your first one above! 🌸</div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>© 2025 Ellie Child · Happy Reading 📖</p>
+    </footer>
+
+    <script>
+      let books = [];
+      let selectedRating = 0;
+
+      // Star rating
+      document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', () => {
+          selectedRating = parseInt(star.getAttribute('data-val'));
+          document.querySelectorAll('.star').forEach(s => {
+            s.classList.toggle('selected', parseInt(s.getAttribute('data-val')) <= selectedRating);
+          });
+        });
+      });
+
+      function addBook() {
+        const title = document.getElementById('bookTitle').value.trim();
+        const author = document.getElementById('bookAuthor').value.trim();
+        const genre = document.getElementById('bookGenre').value.trim();
+        const status = document.getElementById('bookStatus').value;
+        const notes = document.getElementById('bookNotes').value.trim();
+
+        if (!title) { alert('Please enter a book title!'); return; }
+
+        books.push({ title, author, genre, status, rating: selectedRating, notes, id: Date.now() });
+
+        // Reset form
+        document.getElementById('bookTitle').value = '';
+        document.getElementById('bookAuthor').value = '';
+        document.getElementById('bookGenre').value = '';
+        document.getElementById('bookNotes').value = '';
+        selectedRating = 0;
+        document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+
+        renderBooks();
+      }
+
+      function deleteBook(id) {
+        books = books.filter(b => b.id !== id);
+        renderBooks();
+      }
+
+      function renderBooks() {
+        const list = document.getElementById('bookList');
+        const countRead = books.filter(b => b.status === 'read').length;
+        const countReading = books.filter(b => b.status === 'reading').length;
+        const countWant = books.filter(b => b.status === 'want').length;
+
+        document.getElementById('countRead').textContent = countRead;
+        document.getElementById('countReading').textContent = countReading;
+        document.getElementById('countWant').textContent = countWant;
+
+        if (books.length === 0) {
+          list.innerHTML = '<div class="empty-state">No books yet — add your first one above! 🌸</div>';
+          return;
+        }
+
+        list.innerHTML = books.map(book => `
+          <div class="book-card">
+            <div class="book-info">
+              <h3>${book.title}</h3>
+              <p>${book.author ? 'by ' + book.author : ''} ${book.genre ? '· ' + book.genre : ''}</p>
+              <div class="book-stars">${'★'.repeat(book.rating)}${'☆'.repeat(5 - book.rating)}</div>
+              <span class="status-badge status-${book.status}">
+                ${book.status === 'read' ? '✅ Read' : book.status === 'reading' ? '📖 Reading' : '🌸 Want to Read'}
+              </span>
+              ${book.notes ? `<p style="margin-top:8px; font-style:italic; font-size:0.9rem;">"${book.notes}"</p>` : ''}
+            </div>
+            <button class="delete-btn" onclick="deleteBook(${book.id})">Remove</button>
+          </div>
+        `).join('');
+      }
+    </script>
+
+  </body>
+</html>

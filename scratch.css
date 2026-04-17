@@ -1,0 +1,76 @@
+body {
+  background-color: #fdf6ec;
+  font-family: 'Georgia', serif;
+  color: #3d2b1f;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #7a4f3a;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #7a4f3a;
+  border-bottom: 2px solid #e0c9b0;
+  padding-bottom: 8px;
+  margin-top: 40px;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+nav {
+  background-color: #7a4f3a;
+  padding: 14px 30px;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #fdf6ec;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: Georgia, serif;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  background-color: #e0c9b0;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.book-list {
+  background-color: #fff8f0;
+  border-left: 4px solid #c49a6c;
+  padding: 20px 20px 20px 40px;
+  border-radius: 8px;
+}
+
+.video-wrapper {
+  text-align: center;
+  margin: 30px 0;
+}
+
+footer {
+  background-color: #7a4f3a;
+  color: #fdf6ec;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 60px;
+}
